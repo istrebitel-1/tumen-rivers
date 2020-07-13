@@ -1,0 +1,21 @@
+create table task_data(
+	id_data smallint,
+	river_name varchar(50),
+	nitrite_nitrogen varchar(20), 
+	ammonia_nitrogen varchar(20),
+	nitrate_nitrogen varchar(20),
+	phenol varchar(20),
+	oil_products varchar(20),
+	organic_matter varchar(20),
+	iron varchar(20),
+	copper varchar(20),
+	zinc varchar(20),
+	manganese varchar(20),
+	BOD5 varchar(20),
+	observation_period varchar(50),
+	modification_date varchar(50)
+)
+
+copy task_data from 'D:\sas.csv' with delimiter ';' csv header encoding 'windows-1251';
+
+select * from task_data

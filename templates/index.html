@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ содержания загрязняющих веществ в водных объектах</title>
+    <!-- Cusom css -->
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='../static/js.js'></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+</head>
+<body onload="getAll()">
+    <div class='index'>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Анализ содержания загрязняющих веществ в водных объектах</h1>
+                <p>
+                    В ежемесячном режиме осуществляется мониторинг содержания загрязняющих
+                    веществ в водных объектах Тюменской области в части выявления превышений
+                    предельных допустимых концентраций по сведениям, предоставленным Тюменским
+                    центром по гидрометеорологии и мониторингу окружающей среды – филиалом
+                    ФГБУ «Обь-Иртышское управление по гидрометеорологии и мониторингу окружающей среды»
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 d-flex justify-content-center river">
+                <form>
+                    <span>Наименование водного объекта</span>
+                    <select id="river" class="form-control" name="river_name" onchange="OnSelectionChange ('river')">
+                        <option value="all">все</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-sm-4 d-flex justify-content-center date">
+                <form>
+                    <span>Период наблюдений</span>
+                    <select id="date" class="form-control" name="date_name" onchange="OnSelectionChange ('date')">
+                        <option value="all">все</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-sm-4 d-flex justify-content-center dirt">
+                <form>
+                    <span>Загрязняющие вещества</span>
+                    <select id="dirt" class="form-control" name="dirt_name" onchange="OnSelectionChange ('dirt')">
+                        <option value="all">все</option>
+                        <option value="azot_nitrit"> Азот нитритный</option>
+                        <option value="azot_amonit">Азот аммонийный</option>  
+                        <option value="azot_nitrat">Азот нитратный</option>  
+                        <option value="fenol">Фенол</option>
+                        <option value="neft">Нефтепродукты</option>  
+                        <option value="organic_vesh">Органические вещества (по ХПК)</option>  
+                        <option value="steal">Железо</option>  
+                        <option value="med">Медь</option>  
+                        <option value="cink">Цинк</option>  
+                        <option value="marg">Марганец</option>  
+                        <option value="bpk5">БПК5</option>                
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div id="OR_OT_AD__AR_OT_OD" class='grafic'>
+            <figure class="vertical-alone">
+                <div id="dirt_one_river"></div>
+            </figure>
+        </div>
+        <div id="OR_AT_AD__AR_OT_AD" class='grafic'>
+            <figure class="vertical-group">
+                <div id="oneriver_onetime"></div>
+            </figure>
+        </div>
+        <div id="AR_AT_OD__OR_AT_OD" class='grafic'>
+            <figure class="gorisontal-line">
+                <div id="onedirt_oneriverdirt"></div>
+            </figure>
+        </div>
+        <div id="AR_AT_AD">
+        </div>
+        <div id='resultsTable' class='page'>
+			<table class="table">
+				<thead>
+				  <tr>
+					<th scope="col">#</th>
+					<th scope="col">Название водного объекта</th>
+					<th scope="col"><div>Рейтинг загрязненности</div></th>
+				  </tr>
+				</thead>
+				<tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
